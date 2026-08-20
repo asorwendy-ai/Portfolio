@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wendy A. Osei | Security Engineering, Governance &amp; Technical Program Delivery</title>
+<style>
+  :root{
+    --espresso:#2C2018;
+    --ink:#14100C;
+    --cream:#EEEAE0;
+    --beige:#D5BA98;
+    --sand:#C4A47E;
+    --linen:#F7F4EF;
+    --moss:#6F7D55;
+    --rust:#9A4B44;
+    --bronze:#8D6B3C;
+    --gold:#E6B85C;
+    --muted:rgba(238,234,224,.62);
+    --line:rgba(213,186,152,.20);
+    --card:rgba(238,234,224,.035);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--ink);
+    color:var(--cream);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Helvetica,Arial,sans-serif;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 32px}
+
+  nav{
+    position:sticky;top:0;z-index:100;
+    background:rgba(20,16,12,.88);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-in{max-width:1080px;margin:0 auto;padding:16px 32px;display:flex;justify-content:space-between;align-items:center;gap:24px}
+  .brand{font-weight:700;letter-spacing:-.01em;font-size:15px}
+  .brand span{color:var(--beige)}
+  .nav-links{display:flex;gap:26px;flex-wrap:wrap}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:13.5px;letter-spacing:.01em;transition:color .2s}
+  .nav-links a:hover{color:var(--beige)}
+
+  header{padding:104px 0 78px;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+  header::before{
+    content:"";position:absolute;top:-180px;right:-160px;width:620px;height:620px;
+    background:radial-gradient(circle,rgba(213,186,152,.10) 0%,transparent 68%);
+    pointer-events:none;
+  }
+  .eyebrow{
+    color:var(--beige);font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+    font-weight:600;margin-bottom:22px;
+  }
+  h1{
+    font-size:clamp(37px,6vw,66px);line-height:1.04;letter-spacing:-.03em;
+    font-weight:700;margin-bottom:26px;
+  }
+  h1 em{font-style:normal;color:var(--beige)}
+  .lede{font-size:clamp(17px,2.1vw,21px);color:rgba(238,234,224,.80);max-width:670px;margin-bottom:18px}
+  .lede strong{color:var(--cream);font-weight:600}
+
+  .credbelt{
+    display:flex;gap:10px;flex-wrap:wrap;margin-top:34px;padding-top:28px;
+    border-top:1px solid var(--line);align-items:center;
+  }
+  .credbelt-l{
+    font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--sand);
+    font-weight:650;margin-right:6px;
+  }
+  .cert{
+    border:1px solid rgba(213,186,152,.42);border-radius:5px;padding:7px 15px;
+    font-size:13px;font-weight:600;color:var(--beige);background:rgba(213,186,152,.07);
+    letter-spacing:.02em;
+  }
+  .hero-meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+  .chip{
+    border:1px solid var(--line);border-radius:100px;padding:7px 16px;
+    font-size:12.5px;color:rgba(238,234,224,.78);background:var(--card);
+  }
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:38px}
+  .btn{
+    display:inline-block;padding:13px 26px;border-radius:6px;text-decoration:none;
+    font-size:14px;font-weight:600;transition:all .2s;
+  }
+  .btn-1{background:var(--beige);color:var(--ink)}
+  .btn-1:hover{background:var(--cream)}
+  .btn-2{border:1px solid var(--line);color:var(--cream)}
+  .btn-2:hover{border-color:var(--beige);background:var(--card)}
+
+  .stats{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    border-bottom:1px solid var(--line);
+  }
+  .stat{padding:38px 32px;border-right:1px solid var(--line)}
+  .stat:last-child{border-right:none}
+  .stat-n{font-size:34px;font-weight:700;color:var(--beige);letter-spacing:-.03em;line-height:1}
+  .stat-l{font-size:12.5px;color:var(--muted);margin-top:9px;letter-spacing:.01em}
+
+  section{padding:88px 0;border-bottom:1px solid var(--line)}
+  .sec-tag{
+    color:var(--sand);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;
+    font-weight:600;margin-bottom:16px;
+  }
+  h2{font-size:clamp(27px,3.6vw,40px);letter-spacing:-.025em;font-weight:700;margin-bottom:22px;line-height:1.15}
+  .sec-intro{color:rgba(238,234,224,.72);max-width:690px;font-size:16.5px;margin-bottom:52px}
+
+  .thesis{
+    border-left:2px solid var(--beige);padding:6px 0 6px 30px;
+    font-size:clamp(19px,2.5vw,25px);line-height:1.45;letter-spacing:-.015em;
+    max-width:770px;color:var(--cream);font-weight:500;
+  }
+  .pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:var(--line);margin-top:56px;border:1px solid var(--line)}
+  .pillar{background:var(--ink);padding:32px 26px}
+  .pillar h3{font-size:16px;font-weight:650;margin-bottom:12px;letter-spacing:-.01em}
+  .pillar h3::before{content:"";display:block;width:26px;height:2px;background:var(--beige);margin-bottom:16px}
+  .pillar p{font-size:14.5px;color:rgba(238,234,224,.70)}
+
+  .case{
+    border:1px solid var(--line);border-radius:10px;margin-bottom:22px;
+    background:var(--card);overflow:hidden;transition:border-color .25s;
+  }
+  .case:hover{border-color:rgba(213,186,152,.36)}
+  .case-head{padding:32px 34px;cursor:pointer;display:flex;justify-content:space-between;align-items:flex-start;gap:24px}
+  .case-head:hover .case-title{color:var(--beige)}
+  .case-num{font-size:11.5px;color:var(--sand);letter-spacing:.16em;font-weight:600;margin-bottom:11px}
+  .case-title{font-size:21px;font-weight:650;letter-spacing:-.02em;margin-bottom:11px;transition:color .2s;line-height:1.28}
+  .case-sub{font-size:14.5px;color:rgba(238,234,224,.66);max-width:640px}
+  .case-org{
+    font-size:12px;color:var(--sand);margin-top:14px;letter-spacing:.03em;
+    display:flex;gap:10px;flex-wrap:wrap;align-items:center;
+  }
+  .case-org span{opacity:.5}
+  .toggle{
+    flex-shrink:0;width:32px;height:32px;border:1px solid var(--line);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;color:var(--beige);
+    font-size:17px;transition:all .25s;margin-top:4px;
+  }
+  .case.open .toggle{transform:rotate(45deg);background:var(--beige);color:var(--ink);border-color:var(--beige)}
+  .case-body{display:none;padding:0 34px 34px;border-top:1px solid var(--line);padding-top:30px}
+  .case.open .case-body{display:block}
+  .blk{margin-bottom:28px}
+  .blk:last-child{margin-bottom:0}
+  .blk-h{
+    font-size:11.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--sand);
+    font-weight:650;margin-bottom:11px;
+  }
+  .blk p{font-size:15px;color:rgba(238,234,224,.80)}
+  .blk ul{list-style:none;margin-top:6px}
+  .blk li{font-size:15px;color:rgba(238,234,224,.80);padding-left:20px;position:relative;margin-bottom:9px}
+  .blk li::before{content:"";position:absolute;left:0;top:10px;width:6px;height:6px;border-radius:50%;background:var(--sand)}
+  .outcomes{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-top:6px}
+  .oc{border:1px solid var(--line);border-radius:7px;padding:18px 20px;background:rgba(213,186,152,.05)}
+  .oc-n{font-size:25px;font-weight:700;color:var(--gold);letter-spacing:-.02em;line-height:1}
+  .oc-l{font-size:12.5px;color:var(--muted);margin-top:8px;line-height:1.4}
+  .tradeoff{
+    border-left:2px solid var(--rust);padding:4px 0 4px 20px;
+    font-size:15px;color:rgba(238,234,224,.80);font-style:italic;
+  }
+  .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+  .tag{
+    font-size:11.5px;border:1px solid var(--line);border-radius:4px;padding:5px 11px;
+    color:rgba(238,234,224,.66);background:rgba(238,234,224,.03);
+  }
+
+  .skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+  .sk{background:var(--ink);padding:30px 26px}
+  .sk h3{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--beige);font-weight:650;margin-bottom:18px}
+  .sk ul{list-style:none}
+  .sk li{font-size:14.5px;color:rgba(238,234,224,.76);padding:7px 0;border-bottom:1px solid rgba(213,186,152,.09)}
+  .sk li:last-child{border-bottom:none}
+
+  .tl{border-left:1px solid var(--line);padding-left:34px;margin-left:8px}
+  .tl-item{position:relative;padding-bottom:38px}
+  .tl-item:last-child{padding-bottom:0}
+  .tl-item::before{
+    content:"";position:absolute;left:-40px;top:7px;width:11px;height:11px;
+    border-radius:50%;background:var(--ink);border:2px solid var(--beige);
+  }
+  .tl-date{font-size:12px;color:var(--sand);letter-spacing:.08em;margin-bottom:7px;font-weight:600}
+  .tl-role{font-size:17.5px;font-weight:650;letter-spacing:-.015em;margin-bottom:4px}
+  .tl-org{font-size:14.5px;color:rgba(238,234,224,.62)}
+
+  .creds{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+  .cred{border:1px solid var(--line);border-radius:9px;padding:26px;background:var(--card)}
+  .cred-t{font-size:16px;font-weight:650;margin-bottom:7px;letter-spacing:-.01em}
+  .cred-s{font-size:14px;color:rgba(238,234,224,.66);margin-bottom:12px}
+  .cred-m{font-size:12.5px;color:var(--sand)}
+  .cred.hl{border-color:rgba(213,186,152,.42);background:rgba(213,186,152,.06)}
+
+  footer{padding:88px 0 64px}
+  .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px;margin-top:44px}
+  .ct{border:1px solid var(--line);border-radius:9px;padding:26px;background:var(--card);transition:border-color .2s}
+  .ct:hover{border-color:rgba(213,186,152,.4)}
+  .ct-l{font-size:11.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--sand);font-weight:650;margin-bottom:11px}
+  .ct a,.ct span{color:var(--cream);text-decoration:none;font-size:15.5px;word-break:break-word}
+  .ct a:hover{color:var(--beige)}
+  .foot-note{margin-top:60px;padding-top:28px;border-top:1px solid var(--line);font-size:13px;color:rgba(238,234,224,.42)}
+
+  @media(max-width:720px){
+    .wrap{padding:0 22px}
+    .nav-in{padding:14px 22px}
+    .nav-links{display:none}
+    header{padding:64px 0 52px}
+    section{padding:62px 0}
+    .stat{border-right:none;border-bottom:1px solid var(--line);padding:26px 22px}
+    .case-head{padding:24px 22px}
+    .case-body{padding:26px 22px 26px}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <div class="brand">Wendy A. Osei<span> / Security · Governance · Delivery</span></div>
+    <div class="nav-links">
+      <a href="#approach">Approach</a>
+      <a href="#work">Case Studies</a>
+      <a href="#skills">Capabilities</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <div class="eyebrow">Cybersecurity Engineering · GRC · Technical Program Delivery</div>
+    <h1>I design the control,<br>then I <em>run the program</em><br>that lands it.</h1>
+    <p class="lede">Six years securing regulated pharmaceutical environments at <strong>Bristol Myers Squibb</strong> and <strong>Novartis</strong>. CISM for the governance, PMP for the delivery. Then I founded an AI company and had to answer my own risk questions with my own money on the line.</p>
+    <p class="lede">Most security people can write the finding. Fewer can run the sprint that closes it. I do both.</p>
+
+    <div class="credbelt">
+      <span class="credbelt-l">Certified</span>
+      <span class="cert">CISM</span>
+      <span class="cert">PMP</span>
+      <span class="cert">CompTIA Security+</span>
+      <span class="cert">AWS Cloud Practitioner</span>
+      <span class="cert">MBA (STEM), Simon 2028</span>
+    </div>
+
+    <div class="hero-meta">
+      <span class="chip">NIST RMF &amp; SP 800-53</span>
+      <span class="chip">ISO 27001 · SOC 2 · FedRAMP</span>
+      <span class="chip">HIPAA · GDPR · CCPA</span>
+      <span class="chip">DevSecOps &amp; CI/CD Security</span>
+      <span class="chip">Agile / Scrum</span>
+      <span class="chip">AI Risk Management</span>
+    </div>
+    <div class="cta-row">
+      <a class="btn btn-1" href="#work">See the case studies</a>
+      <a class="btn btn-2" href="mailto:asorwendy@gmail.com">Get in touch</a>
+    </div>
+  </div>
+</header>
+
+<div class="stats">
+  <div class="stat"><div class="stat-n">6+</div><div class="stat-l">Years across security engineering, GRC, and delivery</div></div>
+  <div class="stat"><div class="stat-n">75+</div><div class="stat-l">Systems assessed, hardened, or audited</div></div>
+  <div class="stat"><div class="stat-n">40%</div><div class="stat-l">Production vulnerability reduction at Novartis</div></div>
+  <div class="stat"><div class="stat-n">1</div><div class="stat-l">AI product founded, governed, and shipped</div></div>
+</div>
+
+<section id="approach">
+  <div class="wrap">
+    <div class="sec-tag">The Approach</div>
+    <h2>A finding nobody closes is just a liability with a timestamp.</h2>
+    <p class="thesis">Security programs rarely fail at the analysis. They fail in the gap between identifying a risk and getting an organization to actually do something about it. That gap is a delivery problem, not a technical one. That is why I run remediation as sprints with owners, velocity, and a burn-down, rather than as a report I hand over and hope about.</p>
+
+    <div class="pillars">
+      <div class="pillar">
+        <h3>Proportionate, not maximal</h3>
+        <p>Every control I recommend has a documented justification, and so does every control I deliberately exclude. Blanket framework adoption is expensive theater. Scoping is the actual skill.</p>
+      </div>
+      <div class="pillar">
+        <h3>Evidence that generates itself</h3>
+        <p>Manual control assessment decays the moment the audit ends. I build pipelines and scanning frameworks that produce continuous evidence, so audit readiness is a byproduct of shipping rather than a fire drill.</p>
+      </div>
+      <div class="pillar">
+        <h3>Risk in plain language</h3>
+        <p>Executives don't accept risks they don't understand. They just ignore them. I write risk acceptances a non-technical decision-maker can actually sign, including what happens if we're wrong.</p>
+      </div>
+      <div class="pillar">
+        <h3>AI as a control, not a buzzword</h3>
+        <p>I use AI to compress security work that used to take weeks, and I govern an AI system that makes consequential decisions about real people. Both sides of that, in production.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="sec-tag">Case Studies</div>
+    <h2>Five decisions, and what they cost.</h2>
+    <p class="sec-intro">Each is framed the way a hiring manager reads it: the constraint I was under, the call I made, the trade-off I accepted, and what it actually produced. Click any case to open it.</p>
+
+    <!-- CASE 1 -->
+    <div class="case" onclick="this.classList.toggle('open')">
+      <div class="case-head">
+        <div>
+          <div class="case-num">CASE 01 · FLAGSHIP</div>
+          <div class="case-title">Governing a high-risk AI system that matches strangers for in-person meetings</div>
+          <div class="case-sub">Founding an AI product forced me to run a real AI risk assessment where the residual risk was mine to carry, while also owning the roadmap that shipped it.</div>
+          <div class="case-org">GymSync AI <span>·</span> Founder, Technical Project Manager &amp; Application Security Lead <span>·</span> Oct 2024 – Present</div>
+        </div>
+        <div class="toggle">+</div>
+      </div>
+      <div class="case-body">
+        <div class="blk">
+          <div class="blk-h">The problem</div>
+          <p>GymSync is an AI-powered social fitness platform that matches people with compatible workout partners and coordinates them into meeting in person. Most teams would scope this as a data-privacy problem. It isn't. An algorithm that recommends which stranger you should meet at a gym at 6am carries a risk surface that no SOC 2 report covers: physical safety, matching fairness across demographics, and the trust users extend to a recommendation they assume is neutral.</p>
+        </div>
+        <div class="blk">
+          <div class="blk-h">Constraints I was working under</div>
+          <ul>
+            <li>Pre-revenue startup with no budget for a dedicated security hire, a GRC platform, or an external audit</li>
+            <li>Distributed engineering team on two-week Agile sprints against an app-store launch deadline</li>
+            <li>Two mobile platforms with different review regimes; an Apple rejection mid-cycle forced a feature-scope reduction</li>
+            <li>Consumer PII plus health-adjacent fitness data, triggering GDPR and CCPA obligations from day one</li>
+            <li>I was simultaneously the security function and the delivery function, which put competing incentives inside one person</li>
+          </ul>
+        </div>
+        <div class="blk">
+          <div class="blk-h">What I did</div>
+          <ul>
+            <li>Owned the full project lifecycle: defined the roadmap, ran two-week sprints with a distributed team, and delivered milestones ahead of schedule</li>
+            <li>Facilitated sprint planning, standups, retrospectives, and backlog refinement, holding a priority queue aligned to business objectives rather than to whoever asked loudest</li>
+            <li>Designed and enforced a secure SDLC with security testing embedded in the CI/CD pipeline, so scanning gated releases rather than trailing them</li>
+            <li>Built the privacy posture in as an architectural default: encryption at rest, IAM-scoped access controls, and secured API integration across service boundaries</li>
+            <li>Moved secrets to environment-based access policies enforced through AWS IAM, eliminating credential sprawl before it could accumulate</li>
+            <li>Treated the Apple rejection as a scope-reduction forcing function, shipping a tighter, more defensible feature set rather than contesting it</li>
+          </ul>
+        </div>
+        <div class="blk">
+          <div class="blk-h">Outcome</div>
+          <div class="outcomes">
+            <div class="oc"><div class="oc-n">60%</div><div class="oc-l">Reduction in code exposure risk</div></div>
+            <div class="oc"><div class="oc-n">2</div><div class="oc-l">Regimes satisfied at launch (GDPR, CCPA)</div></div>
+            <div class="oc"><div class="oc-n">0</div><div class="oc-l">Dedicated security headcount required</div></div>
+          </div>
+        </div>
+        <div class="blk">
+          <div class="blk-h">The trade-off I accepted</div>
+          <p class="tradeoff">I chose architectural controls over documentation depth. With no compliance staff, formal artifacts (a full SoA, a maintained risk register, a model card for the matching algorithm) would have consumed the same hours as the encryption and IAM work. I made the encryption real first and accepted that the paperwork lagged. That's a defensible call at pre-launch scale and an indefensible one at Series A, which is exactly when it gets addressed.</p>
+        </div>
+        <div class="blk">
+          <div class="blk-h">Why this matters for the role</div>
+          <p>Most AI governance candidates have written policy about systems someone else built. I've been the person deciding whether a feature ships when the risk assessment is uncomfortable and the runway is finite, and then running the sprint that shipped it. That changes how you write governance. You stop producing controls that sound rigorous and start producing controls a team will actually follow.</p>
+        </div>
+        <div class="tags">
+          <span class="tag">AI Risk Assessment</span><span class="tag">Secure SDLC</span><span class="tag">GDPR</span><span class="tag">CCPA</span><span class="tag">AWS IAM</span><span class="tag">Agile Delivery</span><span class="tag">Roadmap Ownership</span><span class="tag">CI/CD Security</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CASE 2 -->
+    <div class="case" onclick="this.classList.toggle('open')">
+      <div class="case-head">
+        <div>
+          <div class="case-num">CASE 02</div>
+          <div class="case-title">Turning audit readiness from a fire drill into a pipeline output</div>
+          <div class="case-sub">Embedding security testing into CI/CD at a global pharmaceutical company, where a failed audit is a regulatory event rather than an inconvenience.</div>
+          <div class="case-org">Novartis <span>·</span> Information Systems Security Analyst <span>·</span> Jan 2022 – Mar 2024</div>
+        </div>
+        <div class="toggle">+</div>
+      </div>
+      <div class="case-body">
+        <div class="blk">
+          <div class="blk-h">The problem</div>
+          <p>Security assessment was happening downstream of development. Vulnerabilities surfaced in production, control evidence was assembled by hand ahead of each audit cycle, and system security documentation drifted out of sync with what was actually deployed. In a regulated pharma environment, that gap between documented and actual state <em>is</em> the finding.</p>
+        </div>
+        <div class="blk">
+          <div class="blk-h">Constraints I was working under</div>
+          <ul>
+            <li>DevOps teams measured on delivery velocity, with no incentive to absorb security friction</li>
+            <li>FedRAMP and ISO 27001 alignment required, across systems mid-migration to cloud</li>
+            <li>Three organizations (DevOps, Compliance, and Engineering) with no shared definition of done</li>
+            <li>Legacy documentation covering systems whose architecture had already moved on</li>
+          </ul>
+        </div>
+        <div class="blk">
+          <div class="blk-h">What I did</div>
+          <ul>
+            <li>Coordinated cross-functional security projects across DevOps, Compliance, and Engineering, tracking milestones, resolving blockers, and reporting status to senior leadership</li>
+            <li>Integrated SAST, DAST, and container image scanning directly into CI/CD pipelines, shifting detection left of deployment</li>
+            <li>Partnered with DevOps to <em>automate</em> security control assessments rather than mandating them. The control ran as part of the build, so compliance stopped competing with velocity</li>
+            <li>Authored and maintained 20+ System Security Plans and POA&amp;Ms aligned to FedRAMP and ISO 27001, tied to actual deployed state</li>
+            <li>Supported security testing and validation through cloud migration, where the risk profile changed underneath existing controls</li>
+          </ul>
+        </div>
+        <div class="blk">
+          <div class="blk-h">Outcome</div>
+          <div class="outcomes">
+            <div class="oc"><div class="oc-n">40%</div><div class="oc-l">Reduction in production vulnerabilities</div></div>
+            <div class="oc"><div class="oc-n">30%</div><div class="oc-l">Improvement in audit readiness</div></div>
+            <div class="oc"><div class="oc-n">20+</div><div class="oc-l">SSPs and POA&amp;Ms authored and maintained</div></div>
+          </div>
+        </div>
+        <div class="blk">
+          <div class="blk-h">The trade-off I accepted</div>
+          <p class="tradeoff">Automating control assessment meant accepting the scanners' coverage limits. SAST and DAST catch known classes well and miss business-logic flaws almost entirely. I took the consistency and the continuous evidence over broader-but-sporadic manual review, on the reasoning that a control running every build beats a thorough one running twice a year. That gap is real, though, and needs manual threat modeling layered on top.</p>
+        </div>
+        <div class="tags">
+          <span class="tag">DevSecOps</span><span class="tag">SAST / DAST / SCA</span><span class="tag">Container Security</span><span class="tag">FedRAMP</span><span class="tag">ISO 27001</span><span class="tag">SSP &amp; POA&amp;M</span><span class="tag">Cross-Functional Delivery</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CASE 3 -->
+    <div class="case" onclick="this.classList.toggle('open')">
+      <div class="case-head">
+        <div>
+          <div class="case-num">CASE 03</div>
+          <div class="case-title">Fixing the SLA problem nobody thought was a security problem</div>
+          <div class="case-sub">Vulnerability and access risk management across 50+ enterprise platforms, where the root cause turned out to live in change management, not the scanner.</div>
+          <div class="case-org">Bristol Myers Squibb <span>·</span> Cybersecurity Analyst (Contract) <span>·</span> Jan 2021 – Nov 2021</div>
+        </div>
+        <div class="toggle">+</div>
+      </div>
+      <div class="case-body">
+        <div class="blk">
+          <div class="blk-h">The problem</div>
+          <p>Vulnerability scanning across a hybrid cloud estate was producing findings faster than remediation could close them, and SLA compliance was suffering. The instinct was to tune the scanners. The actual failure was upstream: access provisioning and change management ran on separate workflows, so remediation work stalled waiting on access that nobody owned granting.</p>
+        </div>
+        <div class="blk">
+          <div class="blk-h">Constraints I was working under</div>
+          <ul>
+            <li>Hybrid infrastructure spanning on-premise and Azure, with inconsistent tooling coverage</li>
+            <li>50+ enterprise platforms under different business owners with competing priorities</li>
+            <li>Three scanning tools (Tenable, Qualys, Rapid7) producing overlapping and sometimes contradictory findings</li>
+          </ul>
+        </div>
+        <div class="blk">
+          <div class="blk-h">What I did</div>
+          <ul>
+            <li>Deployed and operated Tenable and Rapid7 across hybrid cloud infrastructure, reconciling output against Qualys to produce a single defensible finding set</li>
+            <li>Performed vulnerability analysis and access risk reviews across 50+ enterprise platforms, prioritizing by exploitability and business exposure rather than raw CVSS</li>
+            <li>Traced the SLA failure to the provisioning/change-management seam and aligned the two workflows so remediation wasn't blocked on access</li>
+            <li>Investigated Azure cloud misconfigurations and drove remediation with the owning teams</li>
+            <li>Authored compliance checklists and enforced application security controls across SDLC pipelines</li>
+          </ul>
+        </div>
+        <div class="blk">
+          <div class="blk-h">Outcome</div>
+          <div class="outcomes">
+            <div class="oc"><div class="oc-n">85%</div><div class="oc-l">Improvement in SLA compliance</div></div>
+            <div class="oc"><div class="oc-n">50+</div><div class="oc-l">Enterprise platforms under review</div></div>
+          </div>
+        </div>
+        <div class="blk">
+          <div class="blk-h">What I'd carry forward</div>
+          <p class="tradeoff">The lesson wasn't about tooling. When a security metric is failing, the cause is frequently a process seam outside security's org chart, and the fastest fix is often to go negotiate with the team that owns the other half rather than to buy another scanner.</p>
+        </div>
+        <div class="tags">
+          <span class="tag">Vulnerability Management</span><span class="tag">Tenable</span><span class="tag">Qualys</span><span class="tag">Rapid7</span><span class="tag">Azure Security</span><span class="tag">Access Risk Review</span><span class="tag">Change Management</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CASE 4 -->
+    <div class="case" onclick="this.classList.toggle('open')">
+      <div class="case-head">
+        <div>
+          <div class="case-num">CASE 04</div>
+          <div class="case-title">Running security remediation as sprints, not as a report</div>
+          <div class="case-sub">Right-sizing NIST RMF for a healthcare provider that couldn't afford all of it, then using Scrum to make sure the findings actually closed.</div>
+          <div class="case-org">Naioth in Ramah Counseling Services <span>·</span> Lead Cybersecurity Consultant &amp; Technical Project Lead <span>·</span> Mar 2024 – Present</div>
+        </div>
+        <div class="toggle">+</div>
+      </div>
+      <div class="case-body">
+        <div class="blk">
+          <div class="blk-h">The problem</div>
+          <p>A healthcare counseling practice holds some of the most sensitive data categories that exist, under HIPAA, with none of the security budget of the pharma companies I'd come from. Applying NIST RMF at full scope would have produced a beautiful assessment the organization could not act on. Two tasks, then. Find the subset of controls that genuinely moved risk. Then, harder, make sure the resulting findings didn't die in a document.</p>
+        </div>
+        <div class="blk">
+          <div class="blk-h">Constraints I was working under</div>
+          <ul>
+            <li>Small healthcare provider with no internal security function and no GRC tooling budget</li>
+            <li>HIPAA obligations over highly sensitive patient records</li>
+            <li>Clinical staff as primary users, with near-zero tolerance for controls that add friction to care delivery</li>
+            <li>No dedicated remediation team, so closure depended on people whose actual job was something else</li>
+          </ul>
+        </div>
+        <div class="blk">
+          <div class="blk-h">What I did</div>
+          <ul>
+            <li>Led security reviews of 15+ systems using NIST RMF, scoped to the controls with real risk-reduction value at this size</li>
+            <li>Served as Scrum lead for security remediation sprints, facilitating standups, maintaining backlogs in JIRA, and tracking sprint velocity to drive on-time closure of high-risk findings</li>
+            <li>Managed end-to-end project timelines, stakeholder updates, and delivery checkpoints across all engagements</li>
+            <li>Designed secure Infrastructure-as-Code templates using Ansible and AWS CloudFormation, making the hardened configuration the default deployment path</li>
+            <li>Ran misconfiguration scans across AWS workloads and drove resolution of 50+ high-risk issues</li>
+            <li>Built an automated API security scanning framework via Jenkins, so monitoring continued after my engagement rather than ending with it</li>
+          </ul>
+        </div>
+        <div class="blk">
+          <div class="blk-h">Outcome</div>
+          <div class="outcomes">
+            <div class="oc"><div class="oc-n">15+</div><div class="oc-l">Systems reviewed under NIST RMF</div></div>
+            <div class="oc"><div class="oc-n">50+</div><div class="oc-l">High-risk AWS issues resolved</div></div>
+            <div class="oc"><div class="oc-n">40%</div><div class="oc-l">Reduction in manual testing overhead</div></div>
+          </div>
+        </div>
+        <div class="blk">
+          <div class="blk-h">The trade-off I accepted</div>
+          <p class="tradeoff">I deliberately did not implement the full control set, and I documented why for each exclusion. Recommending controls a client cannot staff produces a report that gets filed and ignored, which leaves them less safe than an honest, smaller program they'll actually run. Proportionate compliance is a defensible position, but only if the exclusions are written down and the residual risk is formally accepted by someone with the authority to accept it.</p>
+        </div>
+        <div class="tags">
+          <span class="tag">NIST RMF</span><span class="tag">HIPAA</span><span class="tag">Scrum Leadership</span><span class="tag">JIRA</span><span class="tag">Secure IaC</span><span class="tag">Ansible</span><span class="tag">CloudFormation</span><span class="tag">Risk Acceptance</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CASE 5 -->
+    <div class="case" onclick="this.classList.toggle('open')">
+      <div class="case-head">
+        <div>
+          <div class="case-num">CASE 05 · FOUNDATION</div>
+          <div class="case-title">Learning that access control is where audits are actually won</div>
+          <div class="case-sub">ITGC audits under SOX and COBIT, the grounding in evidence, walkthroughs, and IAM findings that shapes how I build controls now.</div>
+          <div class="case-org">Lamda IT Consulting Services Inc. <span>·</span> Junior IT Auditor <span>·</span> Jan 2020 – Dec 2020</div>
+        </div>
+        <div class="toggle">+</div>
+      </div>
+      <div class="case-body">
+        <div class="blk">
+          <div class="blk-h">The problem</div>
+          <p>IT general controls audits under SOX and COBIT, across business systems where access had accumulated for years without systematic review. The recurring pattern: organizations had documented access policies, and separately had access reality, and nobody had reconciled the two in a long time.</p>
+        </div>
+        <div class="blk">
+          <div class="blk-h">What I did</div>
+          <ul>
+            <li>Led ITGC audits and application access control reviews under SOX and COBIT frameworks, surfacing and driving mitigation of 20+ high-risk IAM findings</li>
+            <li>Managed walkthroughs and evidence collection across 10+ business systems against enterprise access standards</li>
+            <li>Developed and maintained Business Continuity and Disaster Recovery plans in line with NIST SP 800-34</li>
+          </ul>
+        </div>
+        <div class="blk">
+          <div class="blk-h">Outcome</div>
+          <div class="outcomes">
+            <div class="oc"><div class="oc-n">20+</div><div class="oc-l">High-risk IAM findings mitigated</div></div>
+            <div class="oc"><div class="oc-n">10+</div><div class="oc-l">Business systems audited</div></div>
+          </div>
+        </div>
+        <div class="blk">
+          <div class="blk-h">Why it still matters</div>
+          <p>Starting on the audit side means I design controls already knowing what evidence they'll need to produce and how an assessor will test them. Engineers who've never sat on the other side of a walkthrough tend to build controls that work but can't be proven, and unprovable controls fail audits regardless of whether they're effective.</p>
+        </div>
+        <div class="tags">
+          <span class="tag">ITGC</span><span class="tag">SOX</span><span class="tag">COBIT</span><span class="tag">IAM Review</span><span class="tag">NIST SP 800-34</span><span class="tag">BCP / DRP</span><span class="tag">Audit Evidence</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-tag">Capabilities</div>
+    <h2>What I actually operate.</h2>
+    <p class="sec-intro">Tools used in production environments, not a keyword list. Grouped the way the work is grouped.</p>
+    <div class="skills">
+      <div class="sk">
+        <h3>Governance, Risk &amp; Compliance</h3>
+        <ul>
+          <li>NIST RMF &amp; NIST SP 800-53</li>
+          <li>ISO 27001 &amp; SOC 2</li>
+          <li>FedRAMP &amp; FISMA</li>
+          <li>HIPAA, GDPR, CCPA</li>
+          <li>SOX &amp; COBIT (ITGC)</li>
+          <li>Third-Party Risk Management</li>
+          <li>SSP, SAR, POA&amp;M, Risk Register</li>
+        </ul>
+      </div>
+      <div class="sk">
+        <h3>Program &amp; Delivery Leadership</h3>
+        <ul>
+          <li>Agile &amp; Scrum ceremonies</li>
+          <li>Sprint planning &amp; velocity tracking</li>
+          <li>Backlog management (JIRA)</li>
+          <li>Roadmap definition</li>
+          <li>Stakeholder reporting to leadership</li>
+          <li>Cross-functional coordination</li>
+          <li>Retrospectives &amp; continuous improvement</li>
+        </ul>
+      </div>
+      <div class="sk">
+        <h3>Application &amp; Pipeline Security</h3>
+        <ul>
+          <li>SAST: SonarQube</li>
+          <li>DAST: OWASP ZAP</li>
+          <li>Container scanning: Trivy</li>
+          <li>Software Composition Analysis</li>
+          <li>IaC scanning &amp; secure templates</li>
+          <li>Secure SDLC design</li>
+          <li>Risk &amp; threat modeling</li>
+        </ul>
+      </div>
+      <div class="sk">
+        <h3>Cloud &amp; Infrastructure</h3>
+        <ul>
+          <li>AWS: IAM, EC2, S3, CloudFormation</li>
+          <li>Microsoft Azure &amp; Defender</li>
+          <li>Pivotal Cloud Foundry</li>
+          <li>Ansible</li>
+          <li>Secrets &amp; access policy management</li>
+          <li>Linux &amp; Windows Server</li>
+        </ul>
+      </div>
+      <div class="sk">
+        <h3>Vulnerability Management</h3>
+        <ul>
+          <li>Tenable</li>
+          <li>Rapid7</li>
+          <li>Qualys</li>
+          <li>Risk-based prioritization</li>
+          <li>KPI / KRI monitoring</li>
+          <li>Remediation SLA management</li>
+        </ul>
+      </div>
+      <div class="sk">
+        <h3>AI, DevOps &amp; Platforms</h3>
+        <ul>
+          <li>AI risk assessment for production systems</li>
+          <li>Agentic AI systems (Harvard DSI)</li>
+          <li>Jenkins · GitLab CI/CD · GitHub</li>
+          <li>ServiceNow · RSA Archer · JIRA GRC · SailPoint</li>
+          <li>AI-assisted control documentation</li>
+          <li>Automated compliance reporting</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-tag">Experience</div>
+    <h2>The path here.</h2>
+    <p class="sec-intro">Audit, to enterprise security engineering in regulated industry, to founding and governing an AI product. Each step informs how I read the next one.</p>
+    <div class="tl">
+      <div class="tl-item">
+        <div class="tl-date">OCT 2024 – PRESENT</div>
+        <div class="tl-role">Founder, Technical Project Manager &amp; Application Security Lead</div>
+        <div class="tl-org">GymSync AI, New York, NY</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">MAR 2024 – PRESENT</div>
+        <div class="tl-role">Lead Cybersecurity Consultant &amp; Technical Project Lead</div>
+        <div class="tl-org">Naioth in Ramah Counseling Services, Parsippany, NJ</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">JAN 2022 – MAR 2024</div>
+        <div class="tl-role">Information Systems Security Analyst</div>
+        <div class="tl-org">Novartis, Morris Plains, NJ</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">JAN 2021 – NOV 2021</div>
+        <div class="tl-role">Cybersecurity Analyst</div>
+        <div class="tl-org">Bristol Myers Squibb, Summit, NJ</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">JAN 2020 – DEC 2020</div>
+        <div class="tl-role">Junior IT Auditor</div>
+        <div class="tl-org">Lamda IT Consulting Services Inc., Burlington, MA</div>
+      </div>
+    </div>
+
+    <h2 style="margin-top:72px;font-size:24px">Certifications</h2>
+    <div class="creds" style="margin-top:28px">
+      <div class="cred hl">
+        <div class="cred-t">CISM</div>
+        <div class="cred-s">Certified Information Security Manager, ISACA</div>
+        <div class="cred-m">Security governance, risk management, program development</div>
+      </div>
+      <div class="cred hl">
+        <div class="cred-t">PMP</div>
+        <div class="cred-s">Project Management Professional, PMI</div>
+        <div class="cred-m">End-to-end program and delivery leadership</div>
+      </div>
+      <div class="cred">
+        <div class="cred-t">CompTIA Security+</div>
+        <div class="cred-s">CompTIA</div>
+        <div class="cred-m">Core security operations and controls</div>
+      </div>
+      <div class="cred">
+        <div class="cred-t">AWS Certified Cloud Practitioner</div>
+        <div class="cred-s">Amazon Web Services</div>
+        <div class="cred-m">Cloud architecture and services foundation</div>
+      </div>
+    </div>
+
+    <h2 style="margin-top:56px;font-size:24px">Education</h2>
+    <div class="creds" style="margin-top:28px">
+      <div class="cred">
+        <div class="cred-t">MBA, STEM Designated</div>
+        <div class="cred-s">University of Rochester, Simon Business School</div>
+        <div class="cred-m">Expected May 2028</div>
+      </div>
+      <div class="cred">
+        <div class="cred-t">B.S., Public Health</div>
+        <div class="cred-s">Health Systems Administration &amp; Policy<br>Montclair State University</div>
+        <div class="cred-m">Information Systems · Data Privacy · IT Governance · Healthcare Compliance</div>
+      </div>
+      <div class="cred">
+        <div class="cred-t">Agentic AI Intensive</div>
+        <div class="cred-s">Harvard Data Science Initiative</div>
+        <div class="cred-m">Certificate of Completion, May 2026</div>
+      </div>
+      <div class="cred">
+        <div class="cred-t">Cybersecurity Analyst Track</div>
+        <div class="cred-s">SMARTTHINK Cybersecurity</div>
+        <div class="cred-m">FISMA · NIST RMF · DevSecOps · FedRAMP · TPRM · ISO 27001 · SOC 2</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="sec-tag">Contact</div>
+    <h2>Let's talk.</h2>
+    <p class="sec-intro">Open to Cybersecurity Engineer, GRC Analyst, AI Governance, and Technical Program / Product Manager roles. Happy to walk through any case study above in detail.</p>
+    <div class="contact-grid">
+      <div class="ct">
+        <div class="ct-l">Email</div>
+        <a href="mailto:asorwendy@gmail.com">asorwendy@gmail.com</a>
+      </div>
+      <div class="ct">
+        <div class="ct-l">Phone</div>
+        <a href="tel:+18627045732">862.704.5732</a>
+      </div>
+      <div class="ct">
+        <div class="ct-l">Venture</div>
+        <a href="https://gymsync.ai" target="_blank" rel="noopener">gymsync.ai</a>
+      </div>
+      <div class="ct">
+        <div class="ct-l">LinkedIn</div>
+        <a href="https://www.linkedin.com/in/wendy-osei-cism-/" target="_blank" rel="noopener">linkedin.com/in/wendy-osei-cism-</a>
+      </div>
+    </div>
+    <div class="foot-note">Wendy A. Osei · CISM, PMP, Security+. Cybersecurity engineering, governance, and technical program delivery. Portfolio companion to resume.</div>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function(){
+    var first = document.querySelector('.case');
+    if(first){ first.classList.add('open'); }
+  });
+</script>
+
+</body>
+</html>
