@@ -1,4 +1,4 @@
-# Wendy A. Osei — Portfolio
+# Wendy Osei — Portfolio
 
 **Cybersecurity Engineering · GRC · Technical Program Delivery**
 CISM · CompTIA Security+ · AWS Certified Cloud Practitioner
