@@ -1,9 +1,9 @@
 # Wendy A. Osei — Portfolio
 
 **Cybersecurity Engineering · GRC · Technical Program Delivery**
-CISM · PMP · CompTIA Security+ · AWS Certified Cloud Practitioner
+CISM · CompTIA Security+ · AWS Certified Cloud Practitioner
 
-I design the control, then I run the program that lands it. Six years securing regulated pharmaceutical environments at Bristol Myers Squibb and Novartis — CISM for the governance, PMP for the delivery. Then I founded an AI company and had to answer my own risk questions with my own money on the line.
+I design the control, then I run the program that lands it. Six years securing regulated pharmaceutical environments at Bristol Myers Squibb and Novartis — CISM for the governance, Scrum for the delivery. Then I founded an AI company and had to answer my own risk questions with my own money on the line.
 
 Most security people can write the finding. Fewer can run the sprint that closes it. I do both.
 
@@ -78,13 +78,11 @@ AI risk assessment for production systems · Agentic AI systems (Harvard DSI) ·
 | Credential | Issuer | Focus |
 |---|---|---|
 | **CISM** — Certified Information Security Manager | ISACA | Security governance, risk management, program development |
-| **PMP** — Project Management Professional | PMI | End-to-end program and delivery leadership |
 | **CompTIA Security+** | CompTIA | Core security operations and controls |
 | **AWS Certified Cloud Practitioner** | Amazon Web Services | Cloud architecture and services foundation |
 
 ## Education
 
-- **MBA, STEM designated** — University of Rochester, Simon Business School · *expected May 2028*
 - **B.S., Public Health** — Health Systems Administration & Policy, Montclair State University
   <br>Information Systems · Data Privacy · IT Governance · Healthcare Compliance
 - **Agentic AI Intensive** — Harvard Data Science Initiative · Certificate of Completion, May 2026
